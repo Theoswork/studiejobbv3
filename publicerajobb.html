@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicera Lediga Jobb - TalangTrädet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!---länka från html till css-->
+    <script src="js/linkHandler.js"></script>
+    <script src="js/publicera.js" defer></script>
+    <script src="konto/loginNewuser" defer></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TalangTrädet</h1>
+            <p>Publicera Lediga Jobb</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera lediga jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med Talangträdet</a></li>
+                <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="sidebar">
+                <h3>Tips för en bra jobbannons</h3>
+                <ul>
+                    <li>Var tydlig med jobbtiteln</li>
+                    <li>Beskriv företagskulturen</li>
+                    <li>Lista nyckelkvalifikationer</li>
+                    <li>Inkludera löneinformation om möjligt</li>
+                    <li>Förklara ansökningsprocessen</li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <h2>Publicera en Jobbannons</h2>
+                <form class="job-form" id="publish-job-form" action="/api/jobs" method="POST">
+                    <div class="form-group">
+                        <label for="job-title">Jobbtitel</label>
+                        <input type="text" id="job-title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-name">Företagsnamn</label>
+                        <input type="text" id="company-name" name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Plats</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-type">Anställningsform</label>
+                        <select id="job-type" name="type" required>
+                            <option value="">Välj anställningsform</option>
+                            <option value="Heltid">Heltid</option>
+                            <option value="Deltid">Deltid</option>
+                            <option value="Praktik">Praktik</option>
+                            <option value="Frilans">Frilans</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Jobbeskrivning</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="requirements">Krav och Kvalifikationer</label>
+                        <textarea id="requirements" name="requirements" required></textarea>
+                    </div>
+                    <div class="form-group"></div>
+                        <label for="keywords">Nyckelord</label>
+                        <input   id="keywords" name="keywords" required placeholder="(komma-separerade)">
+
+                    <div class="form-group">
+                        <button type="submit" class="tree-button">Publisera jobb</button>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="sidebar">
+                <h3>Förhandsgranska</h3>
+                <p>Här kan du se en förhandsgranskning av din jobbannons när du fyller i formuläret.</p>
+                <div id="preview"></div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 Studiejobb.se Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+    
+    
+</body>
+</html>

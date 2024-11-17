@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Studiejobb.se</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!---länka från html till css-->
+    <script src="js/linkHandler.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Studiejobb.se</h1>
+            <p>Vår historia, vår framtid</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera lediga jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med Studiejobb</a></li>
+
+
+                <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="sidebar">
+                <h3>Snabbfakta</h3>
+                <div class="info-box">
+                    <p><strong>🌱 Grundat:</strong> 2024</p>
+                    <p><strong>👤 Grundare:</strong> Entreprenören E. Jobb</p>
+                    <p><strong>📍 Huvudkontor:</strong> Stockholm</p>
+                    <p><strong>🎯 Fokus:</strong> Jobbförmedling & Karriärutveckling</p>
+                    <p><strong>🌟 Vision:</strong> Att revolutionera hur människor hittar och utvecklar sina karriärer</p>
+                </div>
+                <h3>Kontakta oss</h3>
+                <div class="info-box">
+                    <p><strong>📧 E-post:</strong> info@studiejobb.se</p>
+                    <p><strong>📞 Telefon:</strong> 070-123 45 67</p>
+                    <button class="tree-button" onclick="showContactForm()">Skicka meddelande</button>
+                </div>
+            </div>
+            <div class="main-content">
+                <h2>Om Studiejobb.se</h2>
+                <p>Studiejobb.se föddes ur en passion för att hjälpa människor hitta sin plats i arbetslivet. Som grundare såg vi ett behov av en mer personlig och engagerad approach till jobbsökning och rekrytering.</p>
+                
+                <div class="quote">
+                    "Varje individ har unika talanger. Vår uppgift är att hjälpa dessa talanger att blomstra och hitta rätt plats att växa."
+                </div>
+
+                <h3>Vår Historia</h3>
+                <p>Studiejobb.se startade som en idé vid ett köksbord 2023. Frustrerade över de opersonliga jobbplattformarna som dominerade marknaden, bestämde vi oss för att skapa något annorlunda - en plattform där varje jobbsökare och arbetsgivare behandlas som en individ, inte bara en siffra.</p>
+
+                <h3>Vår Mission</h3>
+                <p>Vi strävar efter att revolutionera hur människor hittar jobb och hur företag hittar talanger. Genom att kombinera teknologi med en mänsklig touch, skapar vi meningsfulla kopplingar mellan arbetsgivare och jobbsökare.</p>
+
+                <h3>Våra Värderingar</h3>
+                <ul>
+                    <li><strong>🤝 Personlighet:</strong> Vi tror på kraften i personliga relationer.</li>
+                    <li><strong>💡 Innovativt tänkande:</strong> Vi utmanar ständigt status quo i rekryteringsbranschen.</li>
+                    <li><strong>🔍 Integritet:</strong> Ärlighet och transparens är grunden i allt vi gör.</li>
+                    <li><strong>🌱 Tillväxt:</strong> Vi stödjer både individuell och organisatorisk utveckling.</li>
+                    <li><strong>🌍 Samhällsengagemang:</strong> Vi strävar efter att göra en positiv skillnad i samhället.</li>
+                </ul>
+
+                <h3>Framtiden</h3>
+                <p>Vår vision är att bli den ledande plattformen för karriärutveckling och jobbmatchning i Sverige. Vi växer organiskt och hållbart, med fokus på kvalitet och användarupplevelse.</p>
+
+                <h3>Bli en del av vår resa</h3>
+                <p>Studiejobb.se är mer än bara en jobbplattform - det är en gemenskap av individer som tror på potentialen hos varje person. Oavsett om du är en jobbsökare, arbetsgivare eller vill samarbeta med oss, välkomnar vi dig att bli en del av vår växande familj.</p>
+
+                <button class="tree-button" onclick="showContactForm()">Kontakta oss</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 Studiejobb.se. Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+    <script>
+        function showContactForm() {
+            const name = prompt("Vänligen ange ditt namn:");
+            const email = prompt("Vänligen ange din e-postadress:");
+            const message = prompt("Skriv ditt meddelande:");
+            
+            if (name && email && message) {
+                alert(`Tack ${name}! Vi har mottagit ditt meddelande och återkommer till dig så snart som möjligt på ${email}.`);
+            } else {
+                alert("Du måste fylla i alla fält för att skicka meddelandet.");
+            }
+        }
+    </script>
+</body>
+</html>

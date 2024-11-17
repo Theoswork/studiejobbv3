@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>För Studenter - Endeljobb.se</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!---länka från html till css-->
+    <script src="js/linkHandler.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Studentjobb.se</h1>
+            <p>För Studenter - Väx med oss</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera lediga jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med oss</a></li>
+                <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="search-and-jobs">
+                <input type="text" placeholder="🔍 Sök studentjobb..." class="search-box">
+                <select class="dropdown">
+                    <option value="">📚 Välj jobbtyp</option>
+                    <option value="deltid">Deltid</option>
+                    <option value="examensarbete">Examensarbete</option>
+                    <option value="praktik">Praktik</option>
+                    <option value="sommarjobb">Sommarjobb</option>
+                </select>
+                <select class="dropdown">
+                    <option value="">🎓 Välj studieområde</option>
+                    <option value="it">IT & Data</option>
+                    <option value="ekonomi">Ekonomi & Finans</option>
+                    <option value="teknik">Teknik & Ingenjör</option>
+                    <option value="marknadsföring">Marknadsföring</option>
+                    <option value="medicin">Medicin & Hälsa</option>
+                </select>
+                <h3>Senaste studentjobben</h3>
+                <div id="latest-jobs">
+                    <!-- Här kommer de senaste jobben att visas dynamiskt -->
+                </div>
+            </div>
+            <div class="job-listings">
+                <h2>Välkommen Studenter!</h2>
+                <p>Här på Endeljobb.se hjälper vi dig att hitta de perfekta möjligheterna som passar din studiesituation och framtida karriärambitioner.</p>
+                
+                <h3>Vad vi erbjuder:</h3>
+                <ul>
+                    <li><strong>🕒 Deltidsjobb:</strong> Flexibla jobb som passar ditt schema och ger värdefull arbetslivserfarenhet.</li>
+                    <li><strong>📝 Examensarbeten:</strong> Spännande projekt hos företag som kan leda till framtida anställning.</li>
+                    <li><strong>🌱 Praktikplatser:</strong> Få hands-on erfarenhet inom ditt studieområde.</li>
+                    <li><strong>☀️ Sommarjobb:</strong> Utmanande uppdrag under sommarmånaderna för att bygga ditt CV.</li>
+                </ul>
+
+                <h3>Tips för jobbsökande studenter:</h3>
+                <ol>
+                    <li>Anpassa ditt CV för varje ansökan</li>
+                    <li>Framhäv relevanta kurser och projekt</li>
+                    <li>Var öppen för olika typer av erfarenheter</li>
+                    <li>Nätverka med alumner och på karriärmässor</li>
+                    <li>Håll din profil på LinkedIn och Endeljobb.se uppdaterad</li>
+                </ol>
+
+                <h3>Kommande evenemang:</h3>
+                <ul id="events">
+                    <!-- Här kommer evenemang att visas dynamiskt -->
+                </ul>
+
+                <p>Börja din sökning idag och ta första steget mot en lysande karriär. Använd sökfunktionen och filtren till vänster för att hitta de möjligheter som passar dig bäst!</p>
+                
+                <button class="tree-button" onclick="createProfile()">Skapa din profil</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 Endeljobb.se. Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

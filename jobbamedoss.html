@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobba med Studiejobb.se</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"> <!---länka från html till css-->
+    <script src="js/linkHandler.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Studiejobb.se</h1>
+            <p>Väx med oss</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera lediga jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med Talangträdet</a></li>
+                <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="sidebar">
+                <h3>Aktuella uppdrag</h3>
+                <div class="job-item">
+                    <h4 class="job-title">🎧 Kundtjänstmedarbetare</h4>
+                    <p>Deltid/Frilans</p>
+                    <button class="tree-button" onclick="readMore('kundtjanst')">Läs mer</button>
+                </div>
+                <div class="job-item">
+                    <h4 class="job-title">📱 Digital Marknadsförare</h4>
+                    <p>Projektbaserat</p>
+                    <button class="tree-button" onclick="readMore('marknadsforing')">Läs mer</button>
+                </div>
+                <div class="job-item">
+                    <h4 class="job-title">🎨 UI/UX Designer</h4>
+                    <p>Frilans</p>
+                    <button class="tree-button" onclick="readMore('design')">Läs mer</button>
+                </div>
+            </div>
+            <div class="main-content">
+                <h2>Jobba med Studiejobb.se</h2>
+                <p>Vill du vara med och forma framtidens jobbplattform? Studiejobb.se söker drivna individer som vill bidra till vår tillväxt och hjälpa andra att hitta sina drömjobb.</p>
+                
+                <h3>Varför jobba med oss?</h3>
+                <ul>
+                    <li>🕰️ Flexibla arbetstider - Anpassa jobbet efter ditt schema</li>
+                    <li>🏠 Arbeta hemifrån - De flesta uppdrag kan utföras på distans</li>
+                    <li>📈 Värdefull erfarenhet - Få insikt i en snabbväxande startup</li>
+                    <li>🌱 Personlig utveckling - Möjlighet att växa med företaget</li>
+                    <li>💰 Konkurrenskraftig ersättning - Vi värdesätter ditt bidrag</li>
+                </ul>
+
+                <h3>Områden vi söker hjälp inom:</h3>
+                <ol>
+                    <li><strong>🎧 Kundtjänst:</strong> Svara på mail och chatt, hjälpa användare med frågor</li>
+                    <li><strong>📱 Marknadsföring:</strong> Skapa innehåll för sociala medier, SEO, digital annonsering</li>
+                    <li><strong>🎨 Design:</strong> Grafisk design, UI/UX-förbättringar för vår plattform</li>
+                    <li><strong>💼 Försäljning:</strong> Kontakta företag, sälja in våra tjänster</li>
+                    <li><strong>✍️ Innehållsskapande:</strong> Skriva blogginlägg, jobbguider och företagspresentationer</li>
+                    <li><strong>🤝 Rekryteringsassistent:</strong> Hjälpa till att matcha kandidater med jobb</li>
+                    <li><strong>💻 Teknik:</strong> Webbdesign, utveckling och databashantering</li>
+                </ol>
+
+                <h3>Hur du ansöker:</h3>
+                <p>Skicka ett mail till <a href="mailto:jobb@Studiejobb.se">jobb@Studiejobb.se</a> med följande information:</p>
+                <ul>
+                    <li>Vilket område du är intresserad av att arbeta inom</li>
+                    <li>Din erfarenhet och kompetenser</li>
+                    <li>Hur mycket tid du kan avsätta per vecka</li>
+                    <li>En kort beskrivning av varför du vill jobba med Studiejobb.se</li>
+                </ul>
+
+                <p>Vi ser fram emot att höra från dig och välkomna dig till vårt växande team!</p>
+                
+                <button class="tree-button" onclick="applyNow()">Skicka din ansökan</button>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 Studiejobb.se. Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+    <script>
+        function readMore(role) {
+            const roleDescriptions = {
+                kundtjanst: "Som kundtjänstmedarbetare hos Studiejobb.se kommer du att vara vår främsta kontakt med användare. Du kommer att hantera frågor via e-post och chatt, hjälpa användare att navigera på plattformen, och säkerställa att alla får en positiv upplevelse. Detta är en perfekt roll för dig som är serviceinriktad, har goda kommunikationsförmågor och trivs med att lösa problem.",
+                marknadsforing: "I rollen som digital marknadsförare kommer du att ansvara för att öka Studiejobb.se's synlighet online. Du kommer att skapa engagerande innehåll för sociala medier, optimera vår webbplats för sökmotorer, och planera och genomföra digitala marknadsföringskampanjer. Detta är en perfekt roll för dig som är kreativ, datadriven och har erfarenhet av digital marknadsföring.",
+                design: "Som UI/UX designer kommer du att spela en nyckelroll i att förbättra användarupplevelsen på Studiejobb.se. Du kommer att skapa användarvänliga gränssnitt, genomföra användartester, och kontinuerligt förbättra designen baserat på feedback och data. Detta är en perfekt roll för dig som har ett öga för design, förstår användarbeteende, och kan omsätta insikter till funktionella och estetiskt tilltalande lösningar."
+            };
+
+            alert(roleDescriptions[role]);
+        }
+
+        function applyNow() {
+            const subject = encodeURIComponent("Ansökan till Endeljobb.se");
+            const body = encodeURIComponent("Hej Endeljobb.se-teamet,\n\nJag är intresserad av att arbeta med er. Här är lite information om mig:\n\nOmråde jag är intresserad av:\nMin erfarenhet och kompetenser:\nTid jag kan avsätta per vecka:\nVarför jag vill jobba med Endeljobb.se:\n\nTack på förhand!\n\nMed vänliga hälsningar,\n[Ditt namn]");
+            
+            window.location.href = `mailto:jobb@endeljobb.se?subject=${subject}&body=${body}`;
+        }
+    </script>
+</body>
+</html>

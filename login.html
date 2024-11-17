@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logga In / Registrera - TalangTrädet</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Studiejobb.se</h1>
+            <p>Logga In / Registrera</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Hem</a></li>
+                <li><a href="../forstudenter.html">För studenter</a></li>
+                <li><a href="../publicerajobb.html">Publicera lediga jobb</a></li>
+                <li><a href="../jobbamedoss.html">Jobba med oss</a></li>
+                <li><a href="../omoss.html">Om Oss</a></li>
+                <li><a href="../konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div id="toast" style="display: none; position: fixed; bottom: 30px; right: 30px; background-color: #333; color: #fff; padding: 15px; border-radius: 5px; z-index: 1000;">
+            Inloggning lyckades!
+        </div>
+        <div class="content">
+            <!-- Login Section -->
+            <div>
+                <h3>Logga in</h3>
+                <form id="login-form">
+                    <input type="email" id="login-email" placeholder="E-post" required />
+                    <input type="password" id="login-password" placeholder="Lösenord" required />
+                    <button type="submit">Logga in</button>
+                </form>
+                <div id="login-error" style="color: red;"></div>
+            </div>
+
+            <!-- Sign-Up Section -->
+            <div>
+                <h3>Skapa Konto</h3>
+                <form id="signup-form">
+                    <input type="email" id="signup-email" placeholder="E-post" required />
+                    <input type="password" id="signup-password" placeholder="Lösenord" required />
+                    <button type="submit">Skapa Konto</button>
+                </form>
+                <div id="signup-error" style="color: red;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase Configuration and Script -->
+    <script>
+        // Firebase configuration (replace with your Firebase project details)
+        const firebaseConfig = {
+            apiKey: "your-api-key",
+            authDomain: "your-auth-domain",
+            projectId: "your-project-id",
+            storageBucket: "your-storage-bucket",
+            messagingSenderId: "your-messaging-sender-id",
+            appId: "your-app-id"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Login functionality
+        document.getElementById("login-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("login-email").value;
+            const password = document.getElementById("login-password").value;
+            const errorDiv = document.getElementById("login-error");
+
+            try {
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                alert(`Välkommen tillbaka, ${userCredential.user.email}`);
+                errorDiv.textContent = ""; // Clear any previous errors
+                // Optionally redirect after login
+                window.location.href = "../index.html";
+            } catch (error) {
+                errorDiv.textContent = error.message; // Show error message
+            }
+        });
+
+        // Sign-Up functionality
+        document.getElementById("signup-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+            const errorDiv = document.getElementById("signup-error");
+
+            try {
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                alert(`Konto skapat för ${userCredential.user.email}`);
+                errorDiv.textContent = ""; // Clear any previous errors
+                // Optionally redirect after signup
+                window.location.href = "../index.html";
+            } catch (error) {
+                errorDiv.textContent = error.message; // Show error message
+            }
+        });
+    </script>
+</body>
+</html>
