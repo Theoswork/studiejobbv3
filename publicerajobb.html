@@ -6,9 +6,12 @@
     <title>Publicera Lediga Jobb - TalangTrädet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css"> <!---länka från html till css-->
-    <script src="js/linkHandler.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebase/firebaseConfig.js"></script>
     <script src="js/publicera.js" defer></script>
-    <script src="konto/loginNewuser" defer></script>
+
 </head>
 <body>
     <div class="container">
@@ -39,7 +42,7 @@
             </div>
             <div class="main-content">
                 <h2>Publicera en Jobbannons</h2>
-                <form class="job-form" id="publish-job-form" action="/api/jobs" method="POST">
+                <form class="job-form" id="publish-job-form">
                     <div class="form-group">
                         <label for="job-title">Jobbtitel</label>
                         <input type="text" id="job-title" name="title" required>

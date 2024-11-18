@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobblista - TalangTrädet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TalangTrädet</h1>
+            <p>Utforska lediga jobb</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med Talangträdet</a></li>
+                <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="konto/login.html">Logga In / Registrera</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="filters">
+                <h3>Filtrera Jobb</h3>
+                <input type="text" id="search-keyword" placeholder="🔍 Sök efter nyckelord">
+                <input type="text" id="search-location" placeholder="📍 Sök efter plats">
+                <select id="search-type">
+                    <option value="">Anställningsform</option>
+                    <option value="Heltid">Heltid</option>
+                    <option value="Deltid">Deltid</option>
+                    <option value="Praktik">Praktik</option>
+                    <option value="Frilans">Frilans</option>
+                </select>
+                <button id="search-button">Sök</button>
+            </div>
+            <div class="job-list">
+                <h2>Lediga Jobb</h2>
+                <div id="jobs-container">
+                    <p>Hämtar jobb...</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 TalangTrädet. Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+
+    <!-

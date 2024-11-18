@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mitt Konto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Studiejobb.se</h1>
+            <p>Mitt Konto</p>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Hem</a></li>
+                <li><a href="forstudenter.html">För studenter</a></li>
+                <li><a href="publicerajobb.html">Publicera jobb</a></li>
+                <li><a href="jobbamedoss.html">Jobba med oss</a></li>
+                <li><a href="omoss.html">Om oss</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <h2>Välkommen till ditt konto!</h2>
+            <p>Här kan du se och hantera din profil, uppdatera dina inställningar och hålla koll på dina ansökningar.</p>
+            
+            <section class="account-section">
+                <h3>Kontouppgifter</h3>
+                <p><strong>E-post:</strong> <span id="user-email"></span></p>
+                <button id="logout-button">Logga ut</button>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Studiejobb.se. Alla rättigheter förbehållna.</p>
+        </footer>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase/firebaseConfig.js"></script>
+    <script src="firebase/mittkonto.js"></script>
+</body>
+</html>

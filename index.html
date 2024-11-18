@@ -6,13 +6,14 @@
     <title>Studiejobb.se - Hitta ditt nästa jobb</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-       <!-- Firebase SDKs -->
-       <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
-       <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
-       <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-database.js"></script>
-       <!-- Firebase Configuration and Logic -->
-       <script src="js/firebaseConfig.js"></script>
-       <script src="js/auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebase/firebaseConfig.js"></script>
+    <script src="firebase/auth.js"></script>
+    <script src="js/index.js" defer></script>
+    
 </head>
 <body>
     <div class="container">
@@ -27,6 +28,7 @@
                 <li><a href="publicerajobb.html">Publicera lediga jobb</a></li>
                 <li><a href="jobbamedoss.html">Jobba med oss!!!!</a></li>
                 <li><a href="omoss.html">Om Oss</a></li>
+                <li><a href="mittkonto.html">Mitt konto</a></li>
             </ul>
         </nav>
         
@@ -45,7 +47,10 @@
                     <option value="Examensarbete">Examensarbete</option>
                 </select>
                 <h2>Senaste Jobben</h2>
-                <div id="jobs-container"></div>
+                <div id="jobs-container">
+                    <p>Hämtar jobb...</p>
+                </div>
+                
             </div>
             
             <!-- Middle Column: Welcome Information -->
@@ -99,7 +104,5 @@
             <p>&copy; 2024 Studiejobb.se. Alla rättigheter förbehållna.</p>
         </footer>
     </div>
-
- 
 </body>
 </html>

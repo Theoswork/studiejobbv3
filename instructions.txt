@@ -1,0 +1,37 @@
+
+Here’s a concise and reusable text file you can share to reintroduce your requirements for future conversations:
+
+Instructions for My Development Project
+About Me: I am a beginner developer, so please keep the explanations simple and easy to follow. Avoid overcomplicating the code or concepts.
+
+Project Overview: I am building a job-hunting site called Studiejobb.se, which is unique because:
+
+No Personal or IQ Tests: Users applying for jobs will not need to complete personal or IQ tests.
+Freelancing Options: The site will allow users to freelance by:
+Offering services like reviewing CVs.
+Helping with marketing tasks for the site.
+Technical Setup:
+
+I am using Visual Studio Code (VSC) and hosting with Firebase.
+The project uses basic HTML, CSS, and JavaScript with Firebase for features like Authentication and Realtime Database.
+Development Style:
+
+Keep It Simple: Focus on clear, beginner-friendly solutions.
+Code Modularity: Use separate .js files for scripts like authentication, page-specific logic, and configuration.
+Redirect and Feedback: Provide user feedback (like messages) and ensure logical navigation between pages.
+Responsive Design: The pages should be functional on both desktop and mobile devices, but I’m okay with basic layouts for now.
+Current Features:
+
+User signup and login (working with Firebase Authentication).
+A “Mitt Konto” page where users can view account details and log out.
+Future Goals:
+
+Allow users to create job listings and apply for jobs.
+Support freelancing features, like offering CV reviews or marketing services.
+Provide an admin dashboard for managing job postings.
+What I Expect:
+
+Clear, step-by-step guidance.
+Explanations of any new features or techniques.
+Code that I can copy, paste, and test in my project.
+Thank you for helping me build this project!
