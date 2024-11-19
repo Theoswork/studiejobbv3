@@ -488,12 +488,31 @@ button:hover {
 #job-details p {
     margin: 4px 0;
 }
-.save-job-button {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
+/* Style for the job card */
+.job-card {
+    position: relative; /* Allows positioning of child elements */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
 }
+
+/* Style for the Save button */
+.save-job-button {
+    position: absolute; /* Place relative to the .job-card */
+    top: 10px; /* Top-right corner */
+    right: 10px;
+    background: none; /* Transparent background */
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999; /* Default color */
+    transition: color 0.3s ease;
+}
+
+/* Save button hover effect */
 .save-job-button:hover {
-    color: red;
+    color: red; /* Change color on hover */
 }
