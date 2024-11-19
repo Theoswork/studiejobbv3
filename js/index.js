@@ -110,20 +110,37 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to fetch jobs from Firestore
     const fetchJobs = async () => {
         jobsContainer.innerHTML = "<p>Hämtar jobb...</p>"; // Show loading message
-
+        
+    
         try {
+            const user = auth.currentUser;
+    
+            // Fetch saved jobs for the logged-in user
+            let savedJobs = [];
+            if (user) {
+                const userDoc = await db.collection('users').doc(user.uid).get();
+                savedJobs = userDoc.exists ? userDoc.data().jobs.saved || [] : [];
+            }
+            console.log("Saved Jobs from Firestore for User:", savedJobs);
+    
+            // Fetch all jobs from Firestore
             const snapshot = await db.collection('jobs').orderBy('createdAt', 'desc').limit(5).get();
-
+    
             // If no jobs found
             if (snapshot.empty) {
                 jobsContainer.innerHTML = "<p>Inga jobb hittades.</p>";
                 return;
             }
-
+    
             // Clear the container and display jobs
             jobsContainer.innerHTML = '';
             snapshot.forEach((doc) => {
                 const job = doc.data(); // Get job data
+                const isSaved = savedJobs.includes(doc.id); // Check if the job is saved
+               
+
+    
+                // Render each job card
                 jobsContainer.innerHTML += `
                     <div class="job-card" data-id="${doc.id}">
                         <h3>${job.title}</h3>
@@ -131,27 +148,24 @@ document.addEventListener("DOMContentLoaded", () => {
                         <p><strong>Plats:</strong> ${job.location}</p>
                         <p><strong>Anställningsform:</strong> ${job.type}</p>
                         <p>${job.description.substring(0, 100)}...</p>
-                        <button class="save-job-button" data-id="${doc.id}">♡</button>
+                        <button class="save-job-button" data-id="${doc.id}">
+                            ${isSaved ? '❤️' : '♡'}
+                        </button>
                     </div>
                 `;
             });
-
-            // Add click event listeners to job cards
-            const jobCards = document.querySelectorAll('.job-card');
-            jobCards.forEach((card) => {
-                card.addEventListener('click', () => {
-                    const jobId = card.getAttribute('data-id');
-                    showJobDetails(jobId);
-                });
-            });
-
+    
             // Attach save listeners to jobs
             attachSaveListeners();
         } catch (error) {
-            console.error("Error fetching jobs:", error.message);
+            console.error("Error fetching jobs:", error);
             jobsContainer.innerHTML = "<p>Kunde inte hämta jobb. Försök igen senare.</p>";
         }
+        
     };
+    
+    
+    
 
     // Function to attach save listeners
     const attachSaveListeners = () => {
@@ -161,18 +175,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 e.stopPropagation(); // Prevent triggering parent click event
                 const jobId = button.getAttribute('data-id');
                 const user = auth.currentUser;
+                console.log("Updated Saved Jobs:", jobId);
 
+    
                 if (!user) {
                     alert("Du måste vara inloggad för att spara ett jobb!");
                     return;
                 }
-
+    
                 const userRef = db.collection('users').doc(user.uid);
-
+    
                 try {
                     // Check current state of the heart
                     const isSaved = button.textContent === "❤️";
-
+    
                     // Update Firestore: Add or remove the saved job
                     if (isSaved) {
                         await userRef.update({
@@ -192,6 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     };
+    
+    
 
     // Function to display job details
     const showJobDetails = async (jobId) => {
@@ -219,3 +237,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetchJobs(); // Fetch jobs on page load
 });
+
