@@ -1,85 +1,121 @@
-// firebase/mittkonto.js
-
+// Import Firebase modules
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+import { getFirestore, doc, getDoc, setDoc, updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
 
+// Initialize Firebase Auth and Firestore
 const auth = getAuth();
 const db = getFirestore();
 
-// Display user email
-auth.onAuthStateChanged((user) => {
+// On page load, check for logged-in user and display data
+auth.onAuthStateChanged(async (user) => {
     if (user) {
+        const userId = user.uid;
+
+        // Display the user's email
         document.getElementById("user-email").textContent = user.email;
 
-        // Fetch applied jobs
-        fetchAppliedJobs(user.uid);
-
-        // Fetch saved jobs
-        fetchSavedJobs(user.uid);
-
-        // Fetch user preferences
-        fetchPreferences(user.uid);
+        // Fetch and display the user's data
+        await fetchUserPreferences(userId);
+        await fetchAppliedJobs(userId);
+        await fetchSavedJobs(userId);
     } else {
-        window.location.href = "index.html"; // Redirect to login if not logged in
+        // Redirect to login page if not logged in
+        window.location.href = "index.html";
     }
 });
 
-// Fetch applied jobs
-async function fetchAppliedJobs(userId) {
-    const docRef = doc(db, "users", userId, "jobs", "applied");
-    const docSnap = await getDoc(docRef);
+// Fetch user preferences and display them
+async function fetchUserPreferences(userId) {
+    const preferencesRef = doc(db, "users", userId);
+    const docSnap = await getDoc(preferencesRef);
 
     if (docSnap.exists()) {
-        const appliedJobs = docSnap.data().jobs || [];
-        const container = document.getElementById("applied-jobs");
-        container.innerHTML = appliedJobs.map((job) => `<p>${job.title} - ${job.company}</p>`).join("");
-    }
-}
-
-// Fetch saved jobs
-async function fetchSavedJobs(userId) {
-    const docRef = doc(db, "users", userId, "jobs", "saved");
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-        const savedJobs = docSnap.data().jobs || [];
-        const container = document.getElementById("saved-jobs");
-        container.innerHTML = savedJobs.map((job) => `<p>${job.title} - ${job.company}</p>`).join("");
-    }
-}
-
-// Fetch user preferences
-async function fetchPreferences(userId) {
-    const docRef = doc(db, "users", userId, "preferences", "settings");
-    const docSnap = await getDoc(docRef);
-
-    if (docSnap.exists()) {
-        const preferences = docSnap.data();
+        const preferences = docSnap.data().preferences || {};
         document.getElementById("preferred-location").value = preferences.location || "";
         document.getElementById("job-type").value = preferences.jobType || "";
+    } else {
+        console.log("No preferences found for this user.");
     }
 }
 
-// Save preferences
+// Fetch applied jobs and display them
+async function fetchAppliedJobs(userId) {
+    const appliedJobsRef = doc(db, "users", userId);
+    const docSnap = await getDoc(appliedJobsRef);
+
+    if (docSnap.exists()) {
+        const appliedJobs = docSnap.data().jobs?.applied || [];
+        const appliedJobsContainer = document.getElementById("applied-jobs");
+        appliedJobsContainer.innerHTML = ""; // Clear the container
+
+        if (appliedJobs.length > 0) {
+            appliedJobs.forEach((job) => {
+                const jobElement = document.createElement("p");
+                jobElement.textContent = `${job.title} at ${job.company} (${job.location})`;
+                appliedJobsContainer.appendChild(jobElement);
+            });
+        } else {
+            appliedJobsContainer.innerHTML = "<p>Du har inte ansökt till några jobb än.</p>";
+        }
+    }
+}
+
+// Fetch saved jobs and display them
+async function fetchSavedJobs(userId) {
+    const savedJobsRef = doc(db, "users", userId);
+    const docSnap = await getDoc(savedJobsRef);
+
+    if (docSnap.exists()) {
+        const savedJobs = docSnap.data().jobs?.saved || [];
+        const savedJobsContainer = document.getElementById("saved-jobs");
+        savedJobsContainer.innerHTML = ""; // Clear the container
+
+        if (savedJobs.length > 0) {
+            savedJobs.forEach((job) => {
+                const jobElement = document.createElement("p");
+                jobElement.textContent = `${job.title} at ${job.company} (${job.location})`;
+                savedJobsContainer.appendChild(jobElement);
+            });
+        } else {
+            savedJobsContainer.innerHTML = "<p>Du har inte sparat några jobb än.</p>";
+        }
+    }
+}
+
+// Save updated preferences
 document.getElementById("preferences-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const user = auth.currentUser;
 
     if (user) {
+        const userId = user.uid;
         const location = document.getElementById("preferred-location").value;
         const jobType = document.getElementById("job-type").value;
 
-        await setDoc(doc(db, "users", user.uid, "preferences", "settings"), {
-            location,
-            jobType,
-        });
-
-        alert("Dina inställningar har sparats!");
+        try {
+            const userRef = doc(db, "users", userId);
+            await updateDoc(userRef, {
+                preferences: {
+                    location,
+                    jobType,
+                },
+            });
+            alert("Dina inställningar har sparats!");
+        } catch (error) {
+            console.error("Error saving preferences:", error);
+            alert("Kunde inte spara inställningarna.");
+        }
     }
 });
 
-// Logout
+// Log out the user
 document.getElementById("logout-button").addEventListener("click", async () => {
-    await signOut(auth);
-    window.location.href = "index.html"; // Redirect to home page
+    try {
+        await signOut(auth);
+        alert("Du har loggats ut.");
+        window.location.href = "index.html"; // Redirect to login page
+    } catch (error) {
+        console.error("Error logging out:", error);
+        alert("Kunde inte logga ut.");
+    }
 });
