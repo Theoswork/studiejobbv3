@@ -488,3 +488,12 @@ button:hover {
 #job-details p {
     margin: 4px 0;
 }
+.save-job-button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.save-job-button:hover {
+    color: red;
+}
