@@ -42,3 +42,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+
+const auth = getAuth();
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        console.log("User UID:", user.uid);
+    } else {
+        console.log("No user is signed in.");
+    }
+});
