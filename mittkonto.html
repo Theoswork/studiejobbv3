@@ -27,10 +27,49 @@
             <h2>Välkommen till ditt konto!</h2>
             <p>Här kan du se och hantera din profil, uppdatera dina inställningar och hålla koll på dina ansökningar.</p>
             
+            <!-- Account Details Section -->
             <section class="account-section">
                 <h3>Kontouppgifter</h3>
                 <p><strong>E-post:</strong> <span id="user-email"></span></p>
                 <button id="logout-button">Logga ut</button>
+            </section>
+
+            <!-- Applied Jobs Section -->
+            <section class="account-section">
+                <h3>Ansökta jobb</h3>
+                <div id="applied-jobs" class="job-list">
+                    <p>Du har inte ansökt till några jobb än.</p>
+                </div>
+            </section>
+
+            <!-- Saved Jobs Section -->
+            <section class="account-section">
+                <h3>Sparade jobb</h3>
+                <div id="saved-jobs" class="job-list">
+                    <p>Du har inte sparat några jobb än.</p>
+                </div>
+            </section>
+
+            <!-- Preferences Section -->
+            <section class="account-section">
+                <h3>Inställningar</h3>
+                <form id="preferences-form">
+                    <label for="preferred-location">Föredragen plats:</label>
+                    <input type="text" id="preferred-location" placeholder="Ange din föredragna plats">
+
+                    <label for="job-type">Föredragen typ av jobb:</label>
+                    <select id="job-type">
+                        <option value="">Välj</option>
+                        <option value="Heltid">Heltid</option>
+                        <option value="Deltid">Deltid</option>
+                        <option value="Praktik">Praktik</option>
+                        <option value="Frilans">Frilans</option>
+                        <option value="Sommarjobb">Sommarjobb</option>
+                        <option value="Examensarbete">Examensarbete</option>
+                    </select>
+
+                    <button type="submit">Spara Inställningar</button>
+                </form>
             </section>
         </div>
 
@@ -39,8 +78,12 @@
         </footer>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js"></script>
+
+    <!-- Firebase Configuration and Account Script -->
     <script src="firebase/firebaseConfig.js"></script>
     <script src="firebase/mittkonto.js"></script>
 </body>
